@@ -107,139 +107,118 @@
     	<div class="page-banner parallax" style="background-image:url(https://via.placeholder.com/1280x400?text=IMAGE+PLACEHOLDER);">
         	<div class="container">
             	<div class="page-banner-text">
-        			<h1 class="block-title">Contacta con nosotros</h1>
+        			<h1 class="block-title">Hazte socio</h1>
                 </div>
             </div>
         </div>
     </div>
     <!-- Main Content -->
     <div id="main-container">
-    	<div class="content">
-        	<div class="container">
-            	<div class="row">
-                    <div class="col-md-4 col-sm-4">
-                        <h4 class="block-title">Datos de contacto</h4>
+        <div class="content">
                 
-                        <p>
-                            <strong>Email:</strong><br>
-                            <a href="mailto:asdibo@yahoo.es">asdibo@yahoo.es</a>
-                        </p>
-                        <p>
-                            <strong>Teléfono:</strong><br>
-                            <i class="fa fa-phone"></i> 600 123 456
-                            &nbsp;&nbsp;
-                            <a href="https://wa.me/34600123456" 
-                                target="_blank" 
-                                style="
-                                       
-                                        align-items:center;
-                                        gap:10px;
-                                        background-color:#25D366;
-                                        color:white;
-                                        padding:3px 7px;
-                                        border-radius:25px;
-                                        font-weight:600;
-                                        font-size:13px;
-                                        text-decoration:none;
-                                        box-shadow:0 2px 6px rgba(0,0,0,0.15);
-                                ">
-                                    <i class="fa fa-whatsapp" 
-                                    style="
-                                            font-size:18px;
-                                            color:white;
-                                    ">
-                                    </i>
-                                    WhatsApp
-                                </a>
-                        </p>
-                
-                        <p>
-                            <strong>Dirección postal:</strong><br>
-                            Apartado de correos 203<br>
-                            C.P. 28660 – Boadilla del Monte (Madrid)
-                        </p>
-                
-                        <p>
-                            <strong>Atención presencial:</strong><br>
-                            Previa cita, los <strong>miércoles por la tarde</strong><br>
-                            Auditorio Municipal de Boadilla del Monte<br>
-                            Avda. Isabel de Farnesio, 16
-                        </p>
-                    </div>
-                
-                    <div class="col-md-8 col-sm-8">
-                        <p>
-                            Si tienes cualquier duda, quieres información sobre la asociación
-                            o estás interesado en hacerte socio, puedes escribirnos mediante el
-                            siguiente formulario o concertar una cita presencial llamando o escribiendo al teléfono: 600 123 456.
-                        </p>
-                        <div class="map-area">
-                            <iframe
-                                src="https://www.google.com/maps?q=Auditorio+Municipal+de+Boadilla+del+Monte,+Avenida+Isabel+de+Farnesio,+16&output=embed"
-                                width="100%"
-                                height="450"
-                                style="border:0;"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <p>
+                                Al hacerte socio podrás participar en nuestras actividades, talleres y encuentros,
+                                recibir información actualizada y colaborar en el desarrollo de la asociación.
+                            </p>
+                            <p>
+                                La solicitud de alta como socio será revisada por la junta directiva de ASDIBO,
+                                que se pondrá en contacto contigo para confirmar el alta y resolver cualquier duda.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-        	<div class="container">
-            	<div class="row">
-                	<div class="col-md-12 content-block">
-                        <form method="post" id="contactform" name="contactform"
-                              class="contact-form clearfix"
-                              action="mail/contact.php">
-                            <div class="row">
-                    
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" name="nombre"
-                                               class="form-control input-lg"
-                                               placeholder="Nombre y apellidos *" required>
+                <div class="padding-tb75 lgray-bg">
+                    <div class="container">
+                        <div class="row">
+                
+                            <div class="col-md-8 col-md-offset-2">
+                
+                                <form method="post"
+                                      id="membershipform"
+                                      class="contact-form clearfix"
+                                      action="mail/hazte-socio.php">
+                
+                                    <div class="row">
+                
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="nombre"
+                                                       class="form-control input-lg"
+                                                       placeholder="Nombre y apellidos *" required>
+                                            </div>
+                
+                                            <div class="form-group">
+                                                <input type="email" name="email"
+                                                       class="form-control input-lg"
+                                                       placeholder="Email *" required>
+                                            </div>
+                
+                                            <div class="form-group">
+                                                <input type="text" name="telefono"
+                                                       class="form-control input-lg"
+                                                       placeholder="Teléfono">
+                                            </div>
+                
+                                            <div class="form-group">
+                                                <select name="tipo_socio" class="form-control input-lg" required>
+                                                    <option value="">Tipo de socio *</option>
+                                                    <option>Persona con diabetes</option>
+                                                    <option>Familiar</option>
+                                                    <option>Colaborador / simpatizante</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <textarea name="comentarios"
+                                                          rows="8"
+                                                          class="form-control input-lg"
+                                                          placeholder="Comentarios o información adicional"></textarea>
+                                            </div>
+                                        </div>
+                
                                     </div>
-                    
+                
+                                    <!-- CONSENTIMIENTOS LEGALES -->
                                     <div class="form-group">
-                                        <input type="email" name="email"
-                                               class="form-control input-lg"
-                                               placeholder="Email *" required>
+                                        <label>
+                                            <input type="checkbox" name="acepta_estatutos" required>
+                                            He leído y acepto los <a href="estatutos.html" target="_blank">Estatutos de ASDIBO</a>.
+                                        </label>
                                     </div>
-                    
+                
                                     <div class="form-group">
-                                        <input type="text" name="telefono"
-                                               class="form-control input-lg"
-                                               placeholder="Teléfono *" required>
+                                        <label>
+                                            <input type="checkbox" name="acepta_privacidad" required>
+                                            He leído y acepto la <a href="privacy-policy.html" target="_blank">Política de privacidad</a>.
+                                        </label>
                                     </div>
-                                </div>
-                    
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <textarea name="mensaje" rows="8"
-                                                  class="form-control input-lg"
-                                                  placeholder="Mensaje *" required></textarea>
-                                    </div>
-                                </div>
-                    
+                
+                                    <p style="font-size: 13px;">
+                                        Los datos personales facilitados serán tratados por ASDIBO con la finalidad
+                                        de gestionar la solicitud de alta como socio, conforme a la normativa vigente
+                                        de protección de datos.
+                                    </p>
+                
+                                    <input type="submit"
+                                           class="btn btn-primary btn-lg pull-right"
+                                           value="Enviar solicitud">
+                
+                                </form>
+                
                             </div>
-                    
-                            <input type="submit"
-                                   class="btn btn-primary btn-lg pull-right"
-                                   value="Enviar mensaje">
-                        </form>
-                    
-                        <div class="clearfix"></div>
-                        <div id="message"></div>
+                
+                        </div>
                     </div>
-                    
-                    
                 </div>
-            </div>
         </div>
     </div>
+
+    
     
        <!-- Site Footer -->
        <div class="site-footer parallax parallax3" style="background-image:url(images/asdibo/footer-bg.jpg)">
@@ -348,78 +327,6 @@
 <script src="js/init.js"></script> <!-- All Scripts -->
 <script src="vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->
 <script src="js/circle-progress.js"></script> <!-- Circle Progress Bars -->
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> <!-- Google maps api -->
-<script type="text/javascript">
-var geocoder = new google.maps.Geocoder();
-var address = "2500 CityWest Blvd. - Suite 300 Houston, Texas - 77042 USA"; //Add your address here, all on one line.
-var latitude;
-var longitude;
-var color = "#42b8d4"; //Set your tint color. Needs to be a hex value.
 
-function getGeocode() {
-	geocoder.geocode( { 'address': address}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-    		latitude = results[0].geometry.location.lat();
-			longitude = results[0].geometry.location.lng(); 
-			initGoogleMap();   
-    	} 
-	});
-}
-
-function initGoogleMap() {
-	var styles = [
-	    {
-	      stylers: [
-	        { saturation: -100 }
-	      ]
-	    }
-	];
-	
-	var options = {
-		mapTypeControlOptions: {
-			mapTypeIds: ['Styled']
-		},
-		center: new google.maps.LatLng(latitude, longitude),
-		zoom: 13,
-		scrollwheel: false,
-		navigationControl: false,
-		mapTypeControl: false,
-		zoomControl: true,
-		disableDefaultUI: true,	
-		mapTypeId: 'Styled'
-	};
-	var div = document.getElementById('contact-map');
-	var map = new google.maps.Map(div, options);
-	marker = new google.maps.Marker({
-	    map:map,
-	    draggable:false,
-	    animation: google.maps.Animation.DROP,
-	    position: new google.maps.LatLng(latitude,longitude)
-	});
-	var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
-	map.mapTypes.set('Styled', styledMapType);
-	
-	var infowindow = new google.maps.InfoWindow({
-	      content: "<div class='iwContent'>"+address+"</div>"
-	});
-	google.maps.event.addListener(marker, 'click', function() {
-	    infowindow.open(map,marker);
-	  });
-	
-	
-	bounds = new google.maps.LatLngBounds(
-	  new google.maps.LatLng(-84.999999, -179.999999), 
-	  new google.maps.LatLng(84.999999, 179.999999));
-
-	rect = new google.maps.Rectangle({
-	    bounds: bounds,
-	    fillColor: color,
-	    fillOpacity: 0.2,
-	    strokeWeight: 0,
-	    map: map
-	});
-}
-google.maps.event.addDomListener(window, 'load', getGeocode);
-</script>
 </body>
 </html>
