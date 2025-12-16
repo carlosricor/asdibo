@@ -1,89 +1,598 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<!DOCTYPE HTML>
+<html class="no-js">
+<head>
+<!-- Basic Page Needs
+  ================================================== -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ASDIBO - Asociación Diabetes Boadilla</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<!-- Mobile Specific Metas
+  ================================================== -->
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<!-- CSS
+  ================================================== -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="vendor/magnific/magnific-popup.css" rel="stylesheet" type="text/css">
+<link href="vendor/owl-carousel/css/owl.carousel.css" rel="stylesheet" type="text/css">
+<link href="vendor/owl-carousel/css/owl.theme.css" rel="stylesheet" type="text/css">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.6.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.6.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.6.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+<!-- FAVICONS -->
+<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+
+<link rel="manifest" href="images/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
+<link href="css/custom.css" rel="stylesheet" type="text/css"><!-- CUSTOM STYLESHEET FOR STYLING -->
+<!-- Color Style -->
+<link href="colors/color1.css" rel="stylesheet" type="text/css">
+<!-- SCRIPTS
+  ================================================== -->
+<script src="js/modernizr.js"></script><!-- Modernizr -->
+</head>
+<body class="home">
+<!--[if lt IE 7]>
+	<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class="body">
+	<!-- Site Header Wrapper -->
+    <div class="site-header-wrapper">
+        <!-- Site Header -->
+        <header class="site-header">
+            <div class="container">
+                <!-- LOGO -->
+                <div class="site-logo">
+                    <a href="index.html" class="default-logo">
+                        <img src="images/logo.png" alt="ASDIBO – Asociación de Diabetes de Boadilla">
+                    </a>
+                    <a href="index.html" class="default-retina-logo">
+                        <img src="images/logo@2x.png" alt="ASDIBO – Asociación de Diabetes de Boadilla" width="199" height="30">
+                    </a>
+                    <a href="index.html" class="sticky-logo">
+                        <img src="images/sticky-logo.png" alt="ASDIBO – Asociación de Diabetes de Boadilla">
+                    </a>
+                    <a href="index.html" class="sticky-retina-logo">
+                        <img src="images/sticky-logo@2x.png" alt="ASDIBO – Asociación de Diabetes de Boadilla" width="199" height="30">
+                    </a>
+                </div>
+        
+                <!-- Menú responsive -->
+                <a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>
+        
+                <!-- Teléfono + WhatsApp -->
+                <div class="header-info-col">
+                    <i class="fa fa-phone"></i>  600 123 456
+                    &nbsp;&nbsp;
+                    <a href="https://wa.me/34600123456" 
+                        target="_blank" 
+                        style="
+                               
+                                align-items:center;
+                                gap:10px;
+                                background-color:#25D366;
+                                color:white;
+                                padding:3px 7px;
+                                border-radius:25px;
+                                font-weight:600;
+                                font-size:13px;
+                                text-decoration:none;
+                                box-shadow:0 2px 6px rgba(0,0,0,0.15);
+                        ">
+                            <i class="fa fa-whatsapp" 
+                            style="
+                                    font-size:18px;
+                                    color:white;
+                            ">
+                            </i>
+                            WhatsApp
+                        </a>
+                </div>
+        
+                <!-- MENÚ PRINCIPAL -->
+                <ul class="sf-menu dd-menu pull-right" role="menu">
+                    <li><a href="index.html">Inicio</a></li>
+        
+                    <li><a href="about.html">La Asociación</a></li>
+        
+                    <li><a href="hazte-socio.html">Hazte socio</a></li>
+        
+                    <li><a href="events.html">Eventos</a></li>
+        
+                    <li><a href="blog.html">Blog</a></li>
+        
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+        </header>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    <!-- Hero Area -->
+    <div class="hero-area">
+        <div class="flexslider heroflex hero-slider" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-pause="yes">
+            <ul class="slides">
+    
+                <!-- SLIDE 1 – Presentación ASDIBO -->
+                <li class="parallax" style="background-image:url(images/slider/asdibo1.jpg)">
+                    <div class="flex-caption">
+                        <div class="container">
+                            <div class="flex-caption-table">
+                                <div class="flex-caption-cell">
+                                    <div class="flex-caption-text">
+                                        <h2>Apoyando a las personas<br>con diabetes en Boadilla</h2>
+                                        <p>Somos ASDIBO, una asociación creada para acompañar, informar y unir a familias y personas con diabetes.</p>
+                                        <a href="hazte-socio.html" class="btn btn-primary">Hazte socio</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+    
+                <!-- SLIDE 2 – Talleres y actividades -->
+                <li class="parallax" style="background-image:url(images/slider/asdibo2.jpg)">
+                    <div class="flex-caption">
+                        <div class="container">
+                            <div class="flex-caption-table">
+                                <div class="flex-caption-cell text-align-center">
+                                    <div class="flex-caption-text">
+                                        <h2>Próximos talleres y encuentros<br>para toda la familia</h2>
+                                        <p>Formación, apoyo entre familias, charlas y actividades saludables en Boadilla.</p>
+                                        <a href="events.html" class="btn btn-primary">Ver eventos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+    
+                <!-- SLIDE 3 – Comunidad -->
+                <li class="parallax" style="background-image:url(images/slider/asdibo3.jpg)">
+                    <div class="flex-caption">
+                        <div class="container">
+                            <div class="flex-caption-table">
+                                <div class="flex-caption-cell">
+                                    <div class="flex-caption-text text-align-center">
+                                        <h2>Una comunidad unida<br>por la salud y el bienestar</h2>
+                                        <p>Únete y participa en nuestras iniciativas para mejorar la calidad de vida con diabetes.</p>
+                                        <a href="contact.html" class="btn btn-primary btn-lg">Contactar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+    
+            </ul>
+        </div>
+    </div>
+    <div class="featured-links row">
+        <a href="hazte-socio.html" class="featured-link col-md-4 col-sm-4">
+            <span>Infórmate sobre cómo unirte</span>
+            <strong>Hazte socio</strong>
+        </a>
+        <a href="about.html" class="featured-link col-md-4 col-sm-4">
+            <span>Conoce nuestra labor</span>
+            <strong>La Asociación</strong>
+        </a>
+        <a href="events.html" class="featured-link col-md-4 col-sm-4">
+            <span>Consulta próximas actividades</span>
+            <strong>Eventos</strong>
+        </a>
+    </div>
+    <!-- Main Content -->
+    <div id="main-container">
+    	<div class="content">
+        	<div class="lgray-bg padding-tb75">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5">
+                            <h2 class="block-title">Nuestras líneas de acción</h2>
+                            <div class="spacer-30"></div>
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                            <div class="spacer-10"></div>
+                            <p>
+                                En ASDIBO trabajamos para apoyar a personas con diabetes y sus familias en Boadilla del Monte. 
+                                Organizamos actividades, proporcionamos información actualizada y fomentamos la comunidad.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="carousel-wrapper">
+                        <div class="row">
+                            <ul class="owl-carousel carousel-fw" id="causes-slider" data-columns="4" data-autoplay="" data-pagination="no" data-arrows="yes" data-single-item="no" data-items-desktop="4" data-items-desktop-small="3" data-items-tablet="2" data-items-mobile="1">
+            
+                                <!-- ÍTEM 1 -->
+                                <li class="item">
+                                    <div class="grid-item cause-grid-item small-business format-standard">
+                                        <div class="grid-item-inner">
+                                            <a class="media-box">
+                                                <img src="images/asdibo/apoyo.jpg" alt="">
+                                            </a>
+                                            <div class="grid-item-content">
+                                                <h3 class="post-title">Acompañamiento a familias</h3>
+                                                <p>Apoyo a familias recién diagnosticadas y acompañamiento en los primeros pasos.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+            
+                                <!-- ÍTEM 2 -->
+                                <li class="item">
+                                    <div class="grid-item cause-grid-item small-business format-standard">
+                                        <div class="grid-item-inner">
+                                            <a class="media-box">
+                                                <img src="images/asdibo/talleres.jpg" alt="">
+                                            </a>
+                                            <div class="grid-item-content">
+                                                <h3 class="post-title">Talleres y formación</h3>
+                                                <p>Charlas sobre diabetes tipo 1 y 2, uso de tecnología y alimentación saludable.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+            
+                                <!-- ÍTEM 3 -->
+                                <li class="item">
+                                    <div class="grid-item cause-grid-item small-business format-standard">
+                                        <div class="grid-item-inner">
+                                            <a class="media-box">
+                                                <img src="images/asdibo/eventos.jpg" alt="">
+                                            </a>
+                                            <div class="grid-item-content">
+                                                <h3 class="post-title">Eventos para la comunidad</h3>
+                                                <p>Actividades saludables, quedadas familiares y encuentros entre socios.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+            
+                                <!-- ÍTEM 4 -->
+                                <li class="item">
+                                    <div class="grid-item cause-grid-item small-business format-standard">
+                                        <div class="grid-item-inner">
+                                            <a class="media-box">
+                                                <img src="images/asdibo/informacion.jpg" alt="">
+                                            </a>
+                                            <div class="grid-item-content">
+                                                <h3 class="post-title">Información actualizada</h3>
+                                                <p>Divulgación sobre avances, recursos útiles y novedades en diabetes.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+            
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="padding-tb75 position-relative">
+                <div class="half-bg-right accent-bg"></div>
+                <div class="container">
+                    <div class="row">
+            
+                        <!-- Columna IZQUIERDA (Eventos) -->
+                        <div class="col-md-6">
+                            <h2 class="block-title">Próximos eventos</h2>
+                            <div class="spacer-20"></div>
+            
+                            <ul class="events-compact-list">
+            
+                                <!-- Evento 1 -->
+                                <li class="event-list-item">
+                                    <span class="event-date">
+                                        <span class="date">3</span>
+                                        <span class="month">Dic</span>
+                                        <span class="year">2025</span>
+                                    </span>
+                                    <div class="event-list-cont">
+                                        <span class="meta-data">Miércoles, 18:00</span>
+                                        <h4 class="post-title">
+                                            <a href="single-event.html">Taller: Gestión emocional en diabetes</a>
+                                        </h4>
+                                        <p>Sesión dirigida a personas y familias con diabetes tipo 1 y tipo 2 para ayudar en la gestión emocional.</p>
+                                    </div>
+                                </li>
+            
+                                <!-- Evento 2 -->
+                                <li class="event-list-item">
+                                    <span class="event-date">
+                                        <span class="date">27</span>
+                                        <span class="month">Feb</span>
+                                        <span class="year">2026</span>
+                                    </span>
+                                    <div class="event-list-cont">
+                                        <span class="meta-data">Jueves, 19:00</span>
+                                        <h4 class="post-title">
+                                            <a href="single-event.html">Taller de alimentación saludable</a>
+                                        </h4>
+                                        <p>Ideas prácticas, raciones, hidratos y trucos para el día a día. Abierto a todos los socios.</p>
+                                    </div>
+                                </li>
+            
+                                <!-- Evento 3 -->
+                                <li class="event-list-item">
+                                    <span class="event-date">
+                                        <span class="date">09</span>
+                                        <span class="month">Mar</span>
+                                        <span class="year">2026</span>
+                                    </span>
+                                    <div class="event-list-cont">
+                                        <span class="meta-data">Domingo, 11:00</span>
+                                        <h4 class="post-title">
+                                            <a href="single-event.html">Caminata saludable en Boadilla</a>
+                                        </h4>
+                                        <p>Actividad familiar al aire libre para fomentar hábitos saludables y convivencia entre socios.</p>
+                                    </div>
+                                </li>
+            
+                            </ul>
+                        </div>
+            
+                        <!-- Columna DERECHA (Galería) -->
+                        <div class="col-md-6">
+                            <div class="gallery-updates cols2 clearfix">
+                                <ul>
+                                    <li class="format-image grid-item">
+                                        <a href="images/asdibo/evento1.jpg" class="media-box magnific-image">
+                                            <img src="images/asdibo/evento1.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li class="format-gallery grid-item">
+                                        <div class="media-box">
+                                            <div class="flexslider galleryflex" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="slide" data-pause="yes">
+                                                <ul class="slides">
+                                                    <li class="item"><a href="images/asdibo/evento2.jpg" class="popup-image"><img src="images/asdibo/evento2.jpg" alt=""></a></li>
+                                                    <li class="item"><a href="images/asdibo/evento3.jpg" class="popup-image"><img src="images/asdibo/evento3.jpg" alt=""></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="format-image grid-item">
+                                        <a href="images/asdibo/evento4.jpg" class="media-box magnific-image">
+                                            <img src="images/asdibo/evento4.jpg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="gallery-updates-overlay">
+                                    <i class="icon-multiple-image"></i> Actividades recientes
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+           
+            
+            
+            
+            <div class="padding-tb75 lgray-bg">
+                <div class="container">
+                    <div class="row">
+            
+                        <!-- Columna izquierda: Título y descripción -->
+                        <div class="col-md-4 col-sm-4">
+                            <h2 class="block-title">Últimas noticias de nuestro blog</h2>
+                            <p>
+                                En ASDIBO publicamos contenido actualizado sobre diabetes, 
+                                experiencias de familias, avances tecnológicos y actividades de la asociación.
+                            </p>
+                        </div>
+            
+                        <!-- Columna derecha: carrusel de posts -->
+                        <div class="col-md-8 col-sm-8">
+                            <div class="carousel-wrapper">
+                                <div class="row">
+                                    <ul class="owl-carousel carousel-fw" id="news-slider" 
+                                        data-columns="2" data-autoplay="" data-pagination="yes" data-arrows="no" 
+                                        data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" 
+                                        data-items-tablet="1" data-items-mobile="1">
+            
+                                        <!-- POST 1 -->
+                                        <li class="item">
+                                            <div class="grid-item blog-grid-item format-standard">
+                                                <div class="grid-item-inner">
+                                                    <a href="single-post.html" class="media-box">
+                                                        <img src="images/asdibo/blog1.jpg" alt="">
+                                                    </a>
+                                                    <div class="grid-item-content">
+                                                        <h3 class="post-title">
+                                                            <a href="single-post.html">Cómo afrontar un diagnóstico de diabetes tipo 1 en la familia</a>
+                                                        </h3>
+                                                        <span class="meta-data">Publicado el 15 Ene, 2026</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+            
+                                        <!-- POST 2 -->
+                                        <li class="item">
+                                            <div class="grid-item blog-grid-item format-standard">
+                                                <div class="grid-item-inner">
+                                                    <a href="single-post.html" class="media-box">
+                                                        <img src="images/asdibo/blog2.jpg" alt="">
+                                                    </a>
+                                                    <div class="grid-item-content">
+                                                        <h3 class="post-title">
+                                                            <a href="single-post.html">Sensores, bombas y sistemas híbridos: qué debes saber en 2026</a>
+                                                        </h3>
+                                                        <span class="meta-data">Publicado el 10 Ene, 2026</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+            
+                                        <!-- POST 3 -->
+                                        <li class="item">
+                                            <div class="grid-item blog-grid-item format-standard">
+                                                <div class="grid-item-inner">
+                                                    <a href="single-post.html" class="media-box">
+                                                        <img src="images/asdibo/blog3.jpg" alt="">
+                                                    </a>
+                                                    <div class="grid-item-content">
+                                                        <h3 class="post-title">
+                                                            <a href="single-post.html">Resumen del Encuentro ASDIBO: actividades y aprendizajes</a>
+                                                        </h3>
+                                                        <span class="meta-data">Publicado el 05 Ene, 2026</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+            
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accent-bg padding-tb20 cta-fw">
+                <div class="container">
+                    <a href="hazte-socio.html" class="btn btn-default btn-ghost btn-light btn-rounded pull-right">
+                        Hazte socio
+                    </a>
+                    <h4>
+                        Únete a ASDIBO y forma parte de una comunidad que apoya, informa y acompaña a las familias con diabetes.
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Site Footer -->
+   
+    <!-- Site Footer -->
+    <div class="site-footer parallax parallax3" style="background-image:url(images/asdibo/footer-bg.jpg)">
+        <div class="container">
+            <div class="row">
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+                <!-- Columna 1 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="widget footer_widget">
+                        <h4 class="widgettitle">Sobre ASDIBO</h4>
+                        <p><img src="images/logo.png" alt="ASDIBO" style="max-width: 160px;"></p>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
-</html>
+                        <p>
+                            La Asociación de Diabetes de Boadilla del Monte trabaja para acompañar,
+                            informar y apoyar a las familias y personas con diabetes.
+                        </p>
+                        <p>
+                            Email: <a href="mailto:asdibo@yahoo.es">asdibo@yahoo.es</a>
+                        </p>
+
+                        <ul class="social-icons-rounded social-icons-colored">
+                            <li class="facebook"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="mail"><a href="mailto:asdibo@yahoo.es"><i class="icon-mail"></i></a></li>
+                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="whatsapp"><a href="https://wa.me/34600123456"><i class="fa fa-whatsapp"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="widget footer_widget widget_links">
+                        <h4 class="widgettitle">Enlaces útiles</h4>
+                        <ul>
+                            <li><a href="hazte-socio.html">Hazte socio</a></li>
+                            <li><a href="events.html">Próximos eventos</a></li>
+                            <li><a href="about.html">La Asociación</a></li>
+                            <li><a href="blog.html">Blog y noticias</a></li>
+                            <li><a href="contact.html">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Columna 3 (INSCRIPCIONES + LOGOS) -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="widget footer_widget">
+                        <h4 class="widgettitle">Inscripciones oficiales</h4>
+                        <p>ASDIBO está registrada en:</p>
+                        <ul>
+                            <li>✔ Registro de Asociaciones de la Comunidad de Madrid</li>
+                            <li>✔ Federación Española de Diabetes (FEDE)</li>
+                            <li>✔ Registro de Asociaciones del Ayuntamiento de Boadilla del Monte</li>
+                        </ul>
+
+                        <!-- LOGOS -->
+                        <div style="margin-top: 15px;">
+                            <img src="images/logos/comunidad_madrid.png" 
+                                alt="Comunidad de Madrid" 
+                                style="max-width: 90px; margin-right: 10px;">
+
+                            <img src="images/logos/fede.png" 
+                                alt="FEDE" 
+                                style="max-width: 90px; margin-right: 10px;">
+
+                            <img src="images/logos/boadilla.jpeg" 
+                                alt="Ayuntamiento de Boadilla" 
+                                style="max-width: 90px;">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Site Footer -->
+
+    <div class="site-footer-bottom">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="copyrights-col-left">
+                        <p>&copy; 2026 ASDIBO – Asociación de Diabetes de Boadilla del Monte. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="copyrights-col-right">
+                        <ul class="footer-menu">
+                            <li><a href="privacy-policy.html">Política de privacidad</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <a id="back-to-top"><i class="fa fa-angle-double-up"></i></a></div>
+
+
+
+<script src="js/jquery-2.1.3.min.js"></script> <!-- Jquery Library Call -->
+<script src="vendor/magnific/jquery.magnific-popup.min.js"></script> <!-- PrettyPhoto Plugin -->
+<script src="js/ui-plugins.js"></script> <!-- UI Plugins -->
+<script src="js/helper-plugins.js"></script> <!-- Helper Plugins -->
+<script src="vendor/owl-carousel/js/owl.carousel.min.js"></script> <!-- Owl Carousel -->
+<script src="js/bootstrap.js"></script> <!-- UI -->
+<script src="js/init.js"></script> <!-- All Scripts -->
+<script src="vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->
+<script src="js/circle-progress.js"></script> <!-- Circle Progress Bars -->
+</body>
+</html> 
