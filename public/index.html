@@ -294,61 +294,14 @@
             
                         <!-- Columna IZQUIERDA (Eventos) -->
                         <div class="col-md-6">
-                            <h2  class="block-title">Próximos eventos</h2>
+                            <h2 class="block-title">Próximos eventos</h2>
                             <div class="spacer-20"></div>
-            
-                            <ul class="events-compact-list">
-            
-                                <!-- Evento 1 -->
-                                <li class="event-list-item">
-                                    <span class="event-date">
-                                        <span class="date">3</span>
-                                        <span class="month">Dic</span>
-                                        <span class="year">2025</span>
-                                    </span>
-                                    <div class="event-list-cont">
-                                        <span class="meta-data">Miércoles, 18:00</span>
-                                        <h4 class="post-title">
-                                            <a href="single-event.html">Taller: Gestión emocional en diabetes</a>
-                                        </h4>
-                                        <p>Sesión dirigida a personas y familias con diabetes tipo 1 y tipo 2 para ayudar en la gestión emocional.</p>
-                                    </div>
-                                </li>
-            
-                                <!-- Evento 2 -->
-                                <li class="event-list-item">
-                                    <span class="event-date">
-                                        <span class="date">27</span>
-                                        <span class="month">Feb</span>
-                                        <span class="year">2026</span>
-                                    </span>
-                                    <div class="event-list-cont">
-                                        <span class="meta-data">Jueves, 19:00</span>
-                                        <h4 class="post-title">
-                                            <a href="single-event.html">Taller de alimentación saludable</a>
-                                        </h4>
-                                        <p>Ideas prácticas, raciones, hidratos y trucos para el día a día. Abierto a todos los socios.</p>
-                                    </div>
-                                </li>
-            
-                                <!-- Evento 3 -->
-                                <li class="event-list-item">
-                                    <span class="event-date">
-                                        <span class="date">09</span>
-                                        <span class="month">Mar</span>
-                                        <span class="year">2026</span>
-                                    </span>
-                                    <div class="event-list-cont">
-                                        <span class="meta-data">Domingo, 11:00</span>
-                                        <h4 class="post-title">
-                                            <a href="single-event.html">Caminata saludable en Boadilla</a>
-                                        </h4>
-                                        <p>Actividad familiar al aire libre para fomentar hábitos saludables y convivencia entre socios.</p>
-                                    </div>
-                                </li>
-            
-                            </ul>
+                        
+                            <ul class="events-compact-list" id="lista-eventos-dinamica">
+                                </ul>
                         </div>
+                        
+                     
             
                         <!-- Columna DERECHA (Galería) -->
                         <div class="col-md-6">
@@ -595,5 +548,59 @@
 <script src="js/init.js"></script> <!-- All Scripts -->
 <script src="vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->
 <script src="js/circle-progress.js"></script> <!-- Circle Progress Bars -->
+<script>
+    $(document).ready(function() {
+        // URL del archivo JSON
+        var jsonUrl = "js/eventos.json"; // Asegúrate de crear este archivo
+    
+        $.getJSON(jsonUrl, function(data) {
+            var hoy = new Date();
+            hoy.setHours(0,0,0,0); // Ignorar la hora para comparar solo fechas
+    
+            var htmlEventos = "";
+            var eventosEncontrados = 0;
+    
+            // Meses en español para formatear
+            var meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+    
+            $.each(data, function(key, evento) {
+                var fechaEvento = new Date(evento.fecha);
+                
+                // FILTRO: Solo mostrar eventos futuros o de hoy
+                if (fechaEvento >= hoy) {
+                    eventosEncontrados++;
+                    
+                    // Desglosar fecha
+                    var dia = fechaEvento.getDate();
+                    var mesIndex = fechaEvento.getMonth();
+                    var anio = fechaEvento.getFullYear();
+    
+                    htmlEventos += '<li class="event-list-item">';
+                    htmlEventos += '    <span class="event-date">';
+                    htmlEventos += '        <span class="date">' + dia + '</span>';
+                    htmlEventos += '        <span class="month">' + meses[mesIndex] + '</span>';
+                    htmlEventos += '        <span class="year">' + anio + '</span>';
+                    htmlEventos += '    </span>';
+                    htmlEventos += '    <div class="event-list-cont">';
+                    htmlEventos += '        <span class="meta-data">' + evento.dia_semana + ', ' + evento.hora + '</span>';
+                    htmlEventos += '        <h4 class="post-title"><a href="' + evento.enlace + '">' + evento.titulo + '</a></h4>';
+                    htmlEventos += '        <p>' + evento.descripcion + '</p>';
+                    htmlEventos += '    </div>';
+                    htmlEventos += '</li>';
+                }
+            });
+    
+            if (eventosEncontrados > 0) {
+                $("#lista-eventos-dinamica").html(htmlEventos);
+            } else {
+                $("#lista-eventos-dinamica").html('<p>No hay próximos eventos programados por el momento.</p>');
+            }
+        })
+        .fail(function() {
+            console.log("Error al cargar el archivo JSON de eventos.");
+        });
+    });
+    </script>
+
 </body>
 </html> 

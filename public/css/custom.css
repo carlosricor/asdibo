@@ -1,0 +1,10 @@
+/* Ajuste de logo para evitar salto de línea en menú */
+.site-logo img {
+    max-width: 220px !important; /* Reduce de 199px a 160px aprox */
+    height: auto;
+}
+
+/* Asegurar que en re∫tina también se respete */
+.site-logo .default-retina-logo img {
+    max-width: 220px !important;
+}

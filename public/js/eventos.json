@@ -1,0 +1,26 @@
+[
+  {
+    "titulo": "Taller: Gestión emocional en diabetes",
+    "fecha": "2025-12-18",
+    "hora": "18:00",
+    "dia_semana": "Miércoles",
+    "descripcion": "Sesión dirigida a personas y familias con diabetes tipo 1 y tipo 2 para ayudar en la gestión emocional.",
+    "enlace": "single-event.html"
+  },
+  {
+    "titulo": "Taller de alimentación saludable",
+    "fecha": "2026-02-27",
+    "hora": "19:00",
+    "dia_semana": "Jueves",
+    "descripcion": "Ideas prácticas, raciones, hidratos y trucos para el día a día. Abierto a todos los socios.",
+    "enlace": "single-event.html"
+  },
+  {
+    "titulo": "Caminata saludable en Boadilla",
+    "fecha": "2026-03-09",
+    "hora": "11:00",
+    "dia_semana": "Domingo",
+    "descripcion": "Actividad familiar al aire libre para fomentar hábitos saludables y convivencia entre socios.",
+    "enlace": "single-event.html"
+  }
+]
