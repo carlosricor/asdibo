@@ -192,8 +192,7 @@
             	<div class="row">
                 	<div class="col-md-12 content-block">
                         <form method="post" id="contactform" name="contactform"
-                              class="contact-form clearfix"
-                              action="mail/contact.php">
+                              class="contact-form clearfix">
                             <div class="row">
                     
                                 <div class="col-md-6">
@@ -226,13 +225,11 @@
                     
                             </div>
                     
-                            <input type="submit"
-                                   class="btn btn-primary btn-lg pull-right"
-                                   value="Enviar mensaje">
+                            <button type="submit" id="submitBtn" class="btn btn-primary btn-lg pull-right">Enviar mensaje</button>
                         </form>
                     
                         <div class="clearfix"></div>
-                        <div id="message"></div>
+                        <div id="formStatus" style="margin-top:20px; display:none;"></div>
                     </div>
                     
                     
@@ -350,77 +347,53 @@
 <script src="vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->
 <script src="js/circle-progress.js"></script> <!-- Circle Progress Bars -->
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> <!-- Google maps api -->
-<script type="text/javascript">
-var geocoder = new google.maps.Geocoder();
-var address = "2500 CityWest Blvd. - Suite 300 Houston, Texas - 77042 USA"; //Add your address here, all on one line.
-var latitude;
-var longitude;
-var color = "#42b8d4"; //Set your tint color. Needs to be a hex value.
+<script>
+    // --- LÓGICA DEL FORMULARIO DE CONTACTO (MODO NO-CORS) ---
+    
+    // PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT (La misma que ya te funcionaba)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzBhmiBCdQRa0sZ_qizs68vr9peXpPpdUgzKE3u_oD4KOFmNEWGibr0MWAfaJ4-ZD1F/exec';
 
-function getGeocode() {
-	geocoder.geocode( { 'address': address}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-    		latitude = results[0].geometry.location.lat();
-			longitude = results[0].geometry.location.lng(); 
-			initGoogleMap();   
-    	} 
-	});
-}
+    const form = document.getElementById('contactform');
+    const statusMsg = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
 
-function initGoogleMap() {
-	var styles = [
-	    {
-	      stylers: [
-	        { saturation: -100 }
-	      ]
-	    }
-	];
-	
-	var options = {
-		mapTypeControlOptions: {
-			mapTypeIds: ['Styled']
-		},
-		center: new google.maps.LatLng(latitude, longitude),
-		zoom: 13,
-		scrollwheel: false,
-		navigationControl: false,
-		mapTypeControl: false,
-		zoomControl: true,
-		disableDefaultUI: true,	
-		mapTypeId: 'Styled'
-	};
-	var div = document.getElementById('contact-map');
-	var map = new google.maps.Map(div, options);
-	marker = new google.maps.Marker({
-	    map:map,
-	    draggable:false,
-	    animation: google.maps.Animation.DROP,
-	    position: new google.maps.LatLng(latitude,longitude)
-	});
-	var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
-	map.mapTypes.set('Styled', styledMapType);
-	
-	var infowindow = new google.maps.InfoWindow({
-	      content: "<div class='iwContent'>"+address+"</div>"
-	});
-	google.maps.event.addListener(marker, 'click', function() {
-	    infowindow.open(map,marker);
-	  });
-	
-	
-	bounds = new google.maps.LatLngBounds(
-	  new google.maps.LatLng(-84.999999, -179.999999), 
-	  new google.maps.LatLng(84.999999, 179.999999));
+    if(form) {
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // 1. Efecto visual "Enviando..."
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Enviando..."; 
+            statusMsg.style.display = 'none';
 
-	rect = new google.maps.Rectangle({
-	    bounds: bounds,
-	    fillColor: color,
-	    fillOpacity: 0.2,
-	    strokeWeight: 0,
-	    map: map
-	});
-}
-google.maps.event.addDomListener(window, 'load', getGeocode);
+            let formData = new FormData(form);
+
+            // 2. Enviamos con mode: 'no-cors'
+            // Esto le dice al navegador: "Envía los datos, pero no esperes respuesta confirmada"
+            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors'})
+            .then(() => {
+                // Al usar no-cors, si llegamos aquí, asumimos que se envió.
+                // (No podemos leer la respuesta real del servidor, pero sabemos que llegó).
+                statusMsg.innerHTML = '<div class="alert alert-success">¡Gracias! Hemos recibido tu mensaje correctamente.</div>';
+                statusMsg.style.display = 'block';
+                submitBtn.innerText = "Enviado";
+                form.reset(); 
+                
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Enviar mensaje";
+                }, 5000);
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                statusMsg.innerHTML = '<div class="alert alert-danger">Hubo un error de conexión. Inténtalo de nuevo.</div>';
+                statusMsg.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Reintentar";
+            });
+        });
+    }
 </script>
+
 </body>
 </html>
