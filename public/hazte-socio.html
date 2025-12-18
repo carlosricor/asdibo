@@ -135,81 +135,69 @@
                         <div class="row">
                 
                             <div class="col-md-8 col-md-offset-2">
-                
-                                <form method="post"
-                                      id="membershipform"
-                                      class="contact-form clearfix"
-                                      action="mail/hazte-socio.php">
-                
+
+                                <form id="sociosForm" class="contact-form clearfix">
+                                    
+                                    <input type="hidden" name="ip_address" id="ip_address">
+                                    <input type="hidden" name="user_agent" id="user_agent">
+                            
                                     <div class="row">
-                
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="nombre"
-                                                       class="form-control input-lg"
-                                                       placeholder="Nombre y apellidos *" required>
+                                                <input type="text" name="nombre" class="form-control input-lg" placeholder="Nombre y apellidos *" required>
                                             </div>
-                
+                            
                                             <div class="form-group">
-                                                <input type="email" name="email"
-                                                       class="form-control input-lg"
-                                                       placeholder="Email *" required>
+                                                <input type="email" name="email" class="form-control input-lg" placeholder="Email *" required>
                                             </div>
-                
+                            
                                             <div class="form-group">
-                                                <input type="text" name="telefono"
-                                                       class="form-control input-lg"
-                                                       placeholder="Teléfono">
+                                                <input type="text" name="telefono" class="form-control input-lg" placeholder="Teléfono *" required>
                                             </div>
-                
+                            
                                             <div class="form-group">
                                                 <select name="tipo_socio" class="form-control input-lg" required>
                                                     <option value="">Tipo de socio *</option>
-                                                    <option>Persona con diabetes</option>
-                                                    <option>Familiar</option>
-                                                    <option>Colaborador / simpatizante</option>
+                                                    <option value="Persona con diabetes">Persona con diabetes</option>
+                                                    <option value="Familiar">Familiar</option>
+                                                    <option value="Colaborador">Colaborador / simpatizante</option>
                                                 </select>
                                             </div>
                                         </div>
-                
+                            
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <textarea name="comentarios"
-                                                          rows="8"
-                                                          class="form-control input-lg"
-                                                          placeholder="Comentarios o información adicional"></textarea>
+                                                <textarea name="comentarios" rows="8" class="form-control input-lg" placeholder="Comentarios o información adicional"></textarea>
                                             </div>
                                         </div>
-                
                                     </div>
-                
-                                    <!-- CONSENTIMIENTOS LEGALES -->
+                            
                                     <div class="form-group">
                                         <label>
                                             <input type="checkbox" name="acepta_estatutos" required>
                                             He leído y acepto los <a href="docs/estatutos.pdf" target="_blank">Estatutos de ASDIBO</a>.
                                         </label>
                                     </div>
-                
+                            
                                     <div class="form-group">
                                         <label>
                                             <input type="checkbox" name="acepta_privacidad" required>
                                             He leído y acepto la <a href="privacy-policy.html" target="_blank">Política de privacidad</a>.
                                         </label>
                                     </div>
-                
-                                    <p style="font-size: 13px;">
-                                        Los datos personales facilitados serán tratados por ASDIBO con la finalidad
-                                        de gestionar la solicitud de alta como socio, conforme a la normativa vigente
-                                        de protección de datos.
+                            
+                                    <p style="font-size: 13px; color:#666;">
+                                        <i class="fa fa-lock"></i> Sus datos se registrarán de forma segura. 
+                                        Al enviar, se guardará su dirección IP y dispositivo para validar el consentimiento legal.
                                     </p>
-                
-                                    <input type="submit"
-                                           class="btn btn-primary btn-lg pull-right"
-                                           value="Enviar solicitud">
-                
+                            
+                                    <button type="submit" id="btnAltaSocio" class="btn btn-primary btn-lg pull-right">Enviar solicitud</button>
+                            
                                 </form>
-                
+                                
+                                <div class="clearfix"></div>
+                                <div id="statusSocio" style="margin-top:20px; display:none;"></div>
+                            
                             </div>
                 
                         </div>
@@ -328,6 +316,59 @@
 <script src="js/init.js"></script> <!-- All Scripts -->
 <script src="vendor/flexslider/js/jquery.flexslider.js"></script> <!-- FlexSlider -->
 <script src="js/circle-progress.js"></script> <!-- Circle Progress Bars -->
+<script>
+    // URL DEL SCRIPT DE SOCIOS
+    const urlScriptSocios = 'https://script.google.com/macros/s/AKfycbyWOxBSMdfpQI1-hDy67LTF0oUVZ1HwNtseeo7zOF4pbmuBp0O4g8osMCc1MoAYhXc/exec';
 
+    const formSocio = document.getElementById('sociosForm');
+    const statusDiv = document.getElementById('statusSocio');
+    const btnSocio = document.getElementById('btnAltaSocio');
+
+    if(formSocio) {
+        formSocio.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // 1. Bloquear UI
+            btnSocio.disabled = true;
+            btnSocio.innerText = "Registrando datos...";
+            statusDiv.style.display = 'none';
+
+            // 2. Obtener datos técnicos (IP y User Agent)
+            // Usamos un servicio público gratuito para leer la IP del cliente
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    // Rellenamos los campos ocultos
+                    document.getElementById('ip_address').value = data.ip;
+                    document.getElementById('user_agent').value = navigator.userAgent;
+                    
+                    // 3. Preparar envío a Google Sheets
+                    let formData = new FormData(formSocio);
+                    
+                    return fetch(urlScriptSocios, { 
+                        method: 'POST', 
+                        body: formData, 
+                        mode: 'no-cors'
+                    });
+                })
+                .then(() => {
+                    // ÉXITO
+                    statusDiv.innerHTML = '<div class="alert alert-success"><strong>¡Solicitud Recibida!</strong><br>Gracias por querer formar parte de ASDIBO. La Junta Directiva contactará contigo pronto.</div>';
+                    statusDiv.style.display = 'block';
+                    btnSocio.innerText = "Enviado";
+                    formSocio.reset();
+                })
+                .catch(error => {
+                    // ERROR (O fallo al obtener IP)
+                    console.error('Error:', error);
+                    // Si falla la IP, intentamos enviar sin ella (fallback)
+                    statusDiv.innerHTML = '<div class="alert alert-warning">Hubo un problema de conexión. Por favor, inténtalo de nuevo o contáctanos por WhatsApp.</div>';
+                    statusDiv.style.display = 'block';
+                    btnSocio.disabled = false;
+                    btnSocio.innerText = "Reintentar";
+                });
+        });
+    }
+</script>
 </body>
 </html>
