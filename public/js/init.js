@@ -477,9 +477,10 @@ $('.scrollto').on("click", function(){
 	return false;
 });
 
-// FITVIDS
-$(".fw-video, .post-media").fitVids();
-
+// FITVIDS (Protegido para evitar error si falta el plugin)
+if ($.fn.fitVids) {
+    $(".fw-video, .post-media").fitVids();
+}
 //Donation Modal
 $('.predefined-amount input[name=donation-amount]:checked').parent('label').addClass("selected");
 $('.predefined-amount input[name=donation-amount]').on('click',function() {

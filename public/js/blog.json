@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "titulo": "Cómo afrontar un diagnóstico de diabetes tipo 1 en la familia",
+    "fecha": "2025-12-15",
+    "fecha_formato": "15 Dic, 2025",
+    "autor": "Admin",
+    "categoria": "Familia",
+    "imagen": "images/asdibo/blog1.jpg",
+    "enlace": "single-post.html",
+    "resumen": "El diagnóstico marca un antes y un después. Descubre herramientas emocionales para gestionar el cambio en el núcleo familiar."
+  },
+  {
+    "id": 2,
+    "titulo": "Sensores, bombas y sistemas híbridos: qué debes saber en 2026",
+    "fecha": "2025-12-10",
+    "fecha_formato": "10 Dic, 2025",
+    "autor": "Dr. García",
+    "categoria": "Tecnología",
+    "imagen": "images/asdibo/blog2.jpg",
+    "enlace": "single-post.html",
+    "resumen": "Analizamos las últimas novedades en monitorización continua y sistemas de asa cerrada disponibles en España."
+  },
+  {
+    "id": 4,
+    "titulo": "Recetas bajas en carbohidratos para celebraciones",
+    "fecha": "2025-12-15",
+    "fecha_formato": "15 Dic, 2025",
+    "autor": "Nutrición",
+    "categoria": "Alimentación",
+    "imagen": "images/asdibo/evento1.jpg",
+    "enlace": "single-post.html",
+    "resumen": "Disfruta de las fiestas sin descuidar las glucemias con estas tres recetas deliciosas y fáciles de contar."
+  },{
+    "id": 5,
+    "titulo": "Gran jornada en la Feria de Asociaciones de Boadilla",
+    "fecha": "2025-12-18",
+    "fecha_formato": "18 Dic, 2025",
+    "autor": "Junta Directiva",
+    "categoria": "Eventos",
+    "imagen": "images/blog/feria_asociaciones_2025.jpg",
+    "enlace": "feria-asociaciones-2025.html",
+    "resumen": "Un día inolvidable compartiendo con los vecinos de Boadilla. Hubo pintacaras, cuentacuentos sobre la insulina y mucha convivencia."
+  }
+]

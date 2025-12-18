@@ -358,67 +358,21 @@
                         <div class="col-md-8 col-sm-8">
                             <div class="carousel-wrapper">
                                 <div class="row">
-                                    <ul class="owl-carousel carousel-fw" id="news-slider" 
-                                        data-columns="2" data-autoplay="" data-pagination="yes" data-arrows="no" 
-                                        data-single-item="no" data-items-desktop="2" data-items-desktop-small="1" 
-                                        data-items-tablet="1" data-items-mobile="1">
-            
-                                        <!-- POST 1 -->
-                                        <li class="item">
-                                            <div class="grid-item blog-grid-item format-standard">
-                                                <div class="grid-item-inner">
-                                                    <a href="single-post.html" class="media-box">
-                                                        <img src="images/asdibo/blog1.jpg" alt="">
-                                                    </a>
-                                                    <div class="grid-item-content">
-                                                        <h3 class="post-title">
-                                                            <a href="single-post.html">Cómo afrontar un diagnóstico de diabetes tipo 1 en la familia</a>
-                                                        </h3>
-                                                        <span class="meta-data">Publicado el 15 Ene, 2026</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-            
-                                        <!-- POST 2 -->
-                                        <li class="item">
-                                            <div class="grid-item blog-grid-item format-standard">
-                                                <div class="grid-item-inner">
-                                                    <a href="single-post.html" class="media-box">
-                                                        <img src="images/asdibo/blog2.jpg" alt="">
-                                                    </a>
-                                                    <div class="grid-item-content">
-                                                        <h3 class="post-title">
-                                                            <a href="single-post.html">Sensores, bombas y sistemas híbridos: qué debes saber en 2026</a>
-                                                        </h3>
-                                                        <span class="meta-data">Publicado el 10 Ene, 2026</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-            
-                                        <!-- POST 3 -->
-                                        <li class="item">
-                                            <div class="grid-item blog-grid-item format-standard">
-                                                <div class="grid-item-inner">
-                                                    <a href="single-post.html" class="media-box">
-                                                        <img src="images/asdibo/blog3.jpg" alt="">
-                                                    </a>
-                                                    <div class="grid-item-content">
-                                                        <h3 class="post-title">
-                                                            <a href="single-post.html">Resumen del Encuentro ASDIBO: actividades y aprendizajes</a>
-                                                        </h3>
-                                                        <span class="meta-data">Publicado el 05 Ene, 2026</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-            
-                                    </ul>
+                                    <ul id="news-slider-dynamic" class="carousel-fw" 
+                                        data-columns="2" 
+                                        data-autoplay="" 
+                                        data-pagination="yes" 
+                                        data-arrows="no" 
+                                        data-single-item="no" 
+                                        data-items-desktop="2" 
+                                        data-items-desktop-small="1" 
+                                        data-items-tablet="1" 
+                                        data-items-mobile="1">
+                                        
+                                        </ul>
                                 </div>
                             </div>
                         </div>
-            
                     </div>
                 </div>
             </div>
@@ -438,7 +392,7 @@
     <!-- Site Footer -->
    
     <!-- Site Footer -->
-    <div class="site-footer parallax parallax3" style="background-image:url(images/asdibo/footer-bg.jpg)">
+    <div class="site-footer parallax parallax3" >
         <div class="container">
             <div class="row">
 
@@ -600,7 +554,71 @@
             console.log("Error al cargar el archivo JSON de eventos.");
         });
     });
-    </script>
 
+    
+    </script>
+<script>
+    $(document).ready(function() {
+        var jsonUrl = "js/blog.json";
+        var $sliderContainer = $("#news-slider-dynamic");
+    
+        $.getJSON(jsonUrl, function(data) {
+            
+            // 1. Ordenar por fecha descendente (lo más nuevo primero)
+            data.sort(function(a, b) {
+                return new Date(b.fecha) - new Date(a.fecha);
+            });
+    
+            // 2. Tomar solo los últimos X posts (ej. 6 últimos para el carrusel)
+            var ultimosPosts = data.slice(0, 6);
+            var htmlPosts = "";
+    
+            // 3. Generar HTML
+            $.each(ultimosPosts, function(key, post) {
+                htmlPosts += '<li class="item">';
+                htmlPosts += '  <div class="grid-item blog-grid-item format-standard">';
+                htmlPosts += '      <div class="grid-item-inner">';
+                htmlPosts += '          <a href="' + post.enlace + '" class="media-box">';
+                htmlPosts += '              <img src="' + post.imagen + '" alt="' + post.titulo + '">';
+                htmlPosts += '          </a>';
+                htmlPosts += '          <div class="grid-item-content">';
+                htmlPosts += '              <span class="meta-data" style="font-size:11px; text-transform:uppercase; color:#999;">' + post.categoria + '</span>';
+                htmlPosts += '              <h3 class="post-title"><a href="' + post.enlace + '">' + post.titulo + '</a></h3>';
+                htmlPosts += '              <span class="meta-data">Publicado el ' + post.fecha_formato + '</span>';
+                htmlPosts += '          </div>';
+                htmlPosts += '      </div>';
+                htmlPosts += '  </div>';
+                htmlPosts += '</li>';
+            });
+    
+            // 4. Insertar HTML
+            $sliderContainer.html(htmlPosts);
+    
+            // 5. Inicializar Owl Carousel MANUALMENTE
+            // (Replicamos la configuración que tenías en init.js pero aplicada tras la carga)
+            $sliderContainer.addClass("owl-carousel"); // Añadimos la clase ahora
+            $sliderContainer.owlCarousel({
+                items: 2, // data-columns
+                autoPlay: false,
+                pagination: true,
+                navigation: false,
+                itemsDesktop: [1199, 2],
+                itemsDesktopSmall: [979, 1],
+                itemsTablet: [768, 1],
+                itemsMobile: [479, 1],
+                singleItem: false,
+                navigationText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+                stopOnHover: true,
+                lazyLoad: true,
+                transitionStyle: 'fade'
+            });
+    
+        })
+        .fail(function() {
+            console.log("Error al cargar el blog.json");
+            $sliderContainer.html('<p>No se pudieron cargar las noticias.</p>');
+        });
+    });
+    </script>
 </body>
 </html> 

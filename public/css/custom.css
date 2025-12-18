@@ -8,3 +8,11 @@
 .site-logo .default-retina-logo img {
     max-width: 220px !important;
 }
+
+/* Estilo para la categoría o tag activo */
+.filter-link.active {
+    font-weight: 700;       /* Negrita */
+    color: #42b8d4 !important; /* Color azul del tema */
+    text-decoration: none;
+}
+
